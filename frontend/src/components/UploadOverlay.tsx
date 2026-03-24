@@ -51,8 +51,10 @@ export default function UploadOverlay({ onLogout }: UploadOverlayProps) {
       formData.append("student_text", studentText);
       formData.append("parent_text", parentText);
 
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+      
       // Connect to FastAPI backend
-      const res = await fetch("http://localhost:8000/api/pdf/process", {
+      const res = await fetch(`${API_URL}/api/pdf/process`, {
         method: "POST",
         body: formData,
       });
